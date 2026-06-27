@@ -47,3 +47,15 @@ scoop bucket add main https://mirror.nju.edu.cn/git/scoop-main.git
 scoop bucket rm extras
 scoop bucket add extras https://mirror.nju.edu.cn/git/scoop-extras.git
 ```
+
+## 常见问题
+
+### Scoop 任务栏点击软件、出现第二个图标：完整解决
+
+**根本原因**
+你固定到任务栏的是 shim 垫片脚本（`shims\xxx.ps1` / `shim.exe`），Windows 识别启动程序是 PowerShell / 垫片进程；垫片中转启动真实 exe 主程序，进程父进程不同、AppID 不一致，系统判定为两个程序，就会新开图标。
+
+**解决方法**
+
+1. 先打开软件，窗口正常运行。
+2. 右键任务栏已经打开的软件窗口图标 → 选择“固定到任务栏”。
