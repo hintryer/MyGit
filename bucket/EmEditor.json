@@ -1,0 +1,39 @@
+{
+    "version": "24.1.0",
+    "description": "A fast, lightweight and extensible text editor for Windows. Useful for opening very large files.",
+    "homepage": "https://www.emeditor.com/",
+    "license": "Shareware",
+    "architecture": {
+        "64bit": {
+            "url": "https://download.emeditor.info/emed64_24.1.0_portable.zip",
+            "hash": "84f4474b6a6fe64dbe516bb1648894bf6be34a155ecfa4aba87bcc0910f2f8ec"
+        }
+    },
+    "pre_install": [
+        "$manifest.persist | ForEach-Object {",
+        "    if ([io.path]::GetExtension($_)) {",
+        "        if (!(Test-Path \"$persist_dir\\$_\")) { New-Item \"$dir\\$_\" | Out-Null }",
+        "    }",
+        "}"
+    ],
+    "bin": "EmEditor.exe",
+    "shortcuts": [
+        [
+            "EmEditor.exe",
+            "EmEditor"
+        ]
+    ],
+    "persist": [
+        "eeCommon.ini",
+        "eeConfig.ini",
+        "eeLM.ini",
+        "eePlugins.ini"
+    ],
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://download.emeditor.info/emed64_24.1.0_portable.zip"
+            }
+        }
+    }
+}

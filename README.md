@@ -1,2 +1,2 @@
-# MyGit
+# bucket-my
 bucket

@@ -1,0 +1,37 @@
+{
+    "version": "2.10.3",
+    "description": "Cross-platform Bilibili video downloader",
+    "homepage": "https://github.com/ScottSloan/Bili23-Downloader",
+    "license": "GPL-3.0",
+    "extract_dir": "Bili23-Downloader",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ScottSloan/Bili23-Downloader/releases/download/v2.10.3/Bili23-Downloader_2.10.3_windows_x64_portable.zip",
+            "hash": "065200507832ff0bfe1c2290725e0957885a64b7852770e27245069b90bd5bc9"
+        }
+    },
+    "shortcuts": [
+        [
+            "Bili23.exe",
+            "Bili23 Downloader"
+        ]
+    ],
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.json\") -or !(Get-Item \"$persist_dir\\config.json\").Length) {",
+        "    New-Item \"$persist_dir\\config.json\" -ItemType File -Force -ErrorAction SilentlyContinue | Out-Null",
+        "    Set-Content -Path \"$persist_dir\\config.json\" -Value '{\"misc\":{\"check_update_when_lauch\":false}}'",
+        "}"
+    ],
+    "persist": "config.json",
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ScottSloan/Bili23-Downloader/releases/download/v$version/Bili23-Downloader_$version_windows_x64_portable.zip"
+            }
+        },
+        "hash": {
+            "mode": "download"
+        }
+    }
+}
